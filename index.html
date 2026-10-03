@@ -174,6 +174,28 @@
     return performance.now();
   }
 
+function torontoTimestamp() {
+    const d = new Date();
+
+    const parts = new Intl.DateTimeFormat('en-CA', {
+        timeZone: 'America/Toronto',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+    }).formatToParts(d);
+
+    const obj = {};
+    parts.forEach(p => obj[p.type] = p.value);
+
+    const ms = String(d.getMilliseconds()).padStart(3, '0');
+
+    return `${obj.year}-${obj.month}-${obj.day} ${obj.hour}:${obj.minute}:${obj.second}.${ms}`;
+}
+ 
   function isoNow() {
     return new Date().toISOString();
   }
