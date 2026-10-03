@@ -326,6 +326,7 @@ function torontoTimestamp() {
       participant_id: participantIdEl.value.trim() || "unknown",
       trial: trialNumber,
       timestamp_iso: isoNow(),
+      timestamp_toronto: torontoTimestamp(),
       correct: isTarget ? 1 : 0,
       rt_ms: Math.round(rt),
       selected_index: selectedIndex,
